@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Course Tracker</h1>
+    <p>These are all the courses in our database</p>
+        <ul>
+
+            {% for class in classes %}
+                <h4>Course</h4>
+                <p>{{ class.get_name }}</p>
+                <p>{{ class.get_code }}</p>
+                <p>{{ class.get_grade }}</p>
+                <p>{{ class.get_semester }}</p>
+
+                
+
+
+
+            {% endfor %}
+        </ul>
+
+</body>
+</html>

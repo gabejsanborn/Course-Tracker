@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enroll in Course</title>
+</head>
+<body>
+<form action="{% url 'cTracker:enroll' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add Course</button>
+</form>
+</body>
+</html>
