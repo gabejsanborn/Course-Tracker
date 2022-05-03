@@ -1,28 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <style>
+        .header {
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            background-color: #96D4D4;
+        }
+    </style>
 </head>
 <body>
+    <h1 class="header">Your Courses</h1>
 
-    <h1>Course Tracker</h1>
-    <p>These are all the courses in our database</p>
-        <ul>
+    <button id="deleteButton" style="display:none" type="button" onclick="deleteCourse()"> Delete Selected Courses</button>
 
-            {% for class in classes %}
-                <h4>Course</h4>
-                <p>{{ class.get_name }}</p>
-                <p>{{ class.get_code }}</p>
-                <p>{{ class.get_grade }}</p>
-                <p>{{ class.get_semester }}</p>
+    <table id="table">
+        <tr>
+            <th>Course Name</th>
+            <th>Course Code</th>
+            <th>Semester</th>
+            <th>Grade</th>
+            <th>Delete Course</th>
+        </tr>
+        {% for class in classes %}
+        <tr>
+            <td>{{class.get_name}}</td>
+            <td>{{class.get_code}}</td>
+            <td>{{class.get_grade}}</td>
+            <td>{{class.get_semester}}</td>
+            <td><form><input type="checkbox" id="checkbox" onclick="showButton()"></form></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <form id="form">
+        <label for="name">Course Name:</label><br>
+        <input type="text" id="name" name="name"><br>
 
-                
+        <label for="code">Course Code:</label><br>
+        <input type="text" id="code" name="code"><br>
 
+        <label for="semester">Semester:</label><br>
+        <input type="text" id="semester" name="semester"><br>
 
+        <label for="grade">Grade:</label><br>
+        <input type="text" id="grade" name="grade"><br>
 
-            {% endfor %}
-        </ul>
+        <input type="submit" value="Add Course" onclick="addCourse()">
+        <input type="reset">
+    </form>
 
+    <script>
+
+        function showButton() {
+            document.getElementById('deleteButton').style.display = "block";
+        }
+
+        function addCourse() {
+            //HERE to add course
+
+            addRow()
+        }
+
+        function deleteCourse() {
+            //HERE to delete course
+
+            deleteRow()
+        }
+
+        function addRow() {
+            var table = document.getElementById("table").tBodies[0];
+            var newRow = table.insertRow();
+
+            var newCellOne = newRow.insertCell();
+            var name = document.getElementById("name")
+            newCellOne.appendChild(name);
+
+            var newCellTwo = newRow.insertCell();
+            var code = document.getElementById("code")
+            newCellTwo.appendChild(code);
+
+            var newCellThree = newRow.insertCell();
+            var semester = document.getElementById("semester")
+            newCellThree.appendChild(semester);
+
+            var newCellFour = newRow.insertCell();
+            var grade = document.getElementById("grade")
+            newCellFour.appendChild(grade);
+        }
+
+        function deleteRow()  {
+            var table = document.getElementById("table").tBodies[0];
+            var rowCount = table.rows.length;
+
+            for(var i=1; i<rowCount; i++) {
+                var row = table.rows[i];
+                var chkbox = row.cells[4].getElementsByTagName('input')[0];
+                if('checkbox' == chkbox.type && true == chkbox.checked) {
+                    table.deleteRow(i);
+                }
+            }
+        }
+    </script>
 </body>
-</html>
