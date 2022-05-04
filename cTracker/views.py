@@ -10,6 +10,10 @@ def home(request):
     return render(request, 'main/index.html') # we need to create a file index.html
 
 
+def homepage(request):
+    return render(request, 'main/homepage.html')
+
+
 def courses(request):
 
     student_id = 1

@@ -31,29 +31,16 @@
         <tr>
             <td>{{class.get_name}}</td>
             <td>{{class.get_code}}</td>
-            <td>{{class.get_grade}}</td>
             <td>{{class.get_semester}}</td>
+            <td>{{class.get_grade}}</td>
             <td><form><input type="checkbox" id="checkbox" onclick="showButton()"></form></td>
         </tr>
         {% endfor %}
     </table>
     <br>
-    <form id="form">
-        <label for="name">Course Name:</label><br>
-        <input type="text" id="name" name="name"><br>
-
-        <label for="code">Course Code:</label><br>
-        <input type="text" id="code" name="code"><br>
-
-        <label for="semester">Semester:</label><br>
-        <input type="text" id="semester" name="semester"><br>
-
-        <label for="grade">Grade:</label><br>
-        <input type="text" id="grade" name="grade"><br>
-
-        <input type="submit" value="Add Course" onclick="addCourse()">
-        <input type="reset">
-    </form>
+    <p> Link to <a href="enroll">enroll in a course</a>.</p>
+    <p> Link to <a href="addcourse">add a new course to the database</a>.</p>
+    
 
     <script>
 
@@ -103,6 +90,8 @@
                 var chkbox = row.cells[4].getElementsByTagName('input')[0];
                 if('checkbox' == chkbox.type && true == chkbox.checked) {
                     table.deleteRow(i);
+
+
                 }
             }
         }

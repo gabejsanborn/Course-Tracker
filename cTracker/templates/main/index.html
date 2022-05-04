@@ -1,33 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Course Tracker </title>
-    <style>
-        @font-face {
-        font-family: Helvetica;
-        src: url('Helvetica.ttf');
-    }
-    .header {
-        text-align: center;
-    }
 
-    </style>
 </head>
 <body>
-    <h1 class="header">Course Tracker</h1>
-    <h4 class = "header">The website that keeps track of your classes</h4>
 
-    <p>
-        {% if user.is_authenticated %}
-            Welcome {{ user.username }}!
-        {% endif %}
-    </p>
-
-    {% if user.is_authenticated %}
-    <button onclick="window.location.href = 'courses'" type="button"> Continue to Database</button>
-    {% else %}
-    <button onclick="window.location.href = 'login'" type="button"> Login or Signup</button>
-    {% endif %}
-    <br>
-    <p> Link to <a href="admin">admin page</a>.</p>
 </body>
+</html>
